@@ -43,7 +43,6 @@ class ImportController {
       newRequests.push(request);
       if (newRequests.length === splitSize) {
         this.saveSplitedRequests(newRequests);
-        console.log(newRequests.length);
         newRequests = [];
       }
     });
