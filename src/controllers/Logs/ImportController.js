@@ -13,7 +13,7 @@ class ImportController {
    * @return json message
    */
   import = async (_req, res) => {
-    const filepath = resolve(__dirname, '../', '../', 'extras', 'logs', 'teste.txt');
+    const filepath = resolve(__dirname, '../', '../', 'extras', 'logs', 'logs.txt');
     const requests = [];
 
     const lineReader = readline.createInterface({
@@ -25,9 +25,26 @@ class ImportController {
     });
 
     lineReader.on('close', async () => {
-      await new Request(requests).store();
+      await this.splitRequestsToSave(requests);
       res.status(200).json({ message: 'Import successful!' });
     });
+  };
+
+  splitRequestsToSave = async (requests) => {
+    const splitSize = 2000;
+    let newRequests = [];
+
+    requests.forEach((request) => {
+      newRequests.push(request);
+      if (newRequests.length === splitSize) {
+        this.saveSplitedRequests(newRequests);
+        newRequests = [];
+      }
+    });
+  };
+
+  saveSplitedRequests = async (requests) => {
+    await new Request(requests).store();
   };
 
   /**
