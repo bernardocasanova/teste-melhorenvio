@@ -46,7 +46,7 @@ class RequestController {
    * Transform each request from log file
    *
    * @param object with request
-   * @return array
+   * @return object
    */
   transformRequestData = (request) => ({
     consumer_id: request.authenticated_entity.consumer_id.uuid,
