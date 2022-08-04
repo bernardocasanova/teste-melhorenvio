@@ -2,9 +2,9 @@ import { resolve } from 'path';
 import fs from 'fs';
 import readline from 'readline';
 
-import Request from '../models/Request';
+import Request from '../../models/Request';
 
-class RequestController {
+class ImportController {
   /**
    * Import requests from requests log file
    * @param object req is an object containing information about the HTTP request
@@ -12,8 +12,8 @@ class RequestController {
    *
    * @return json message
    */
-  import = async (req, res) => {
-    const filepath = resolve(__dirname, '../', 'extras', 'logs', 'teste.txt');
+  import = async (_req, res) => {
+    const filepath = resolve(__dirname, '../', '../', 'extras', 'logs', 'teste.txt');
     const requests = [];
 
     const lineReader = readline.createInterface({
@@ -26,20 +26,8 @@ class RequestController {
 
     lineReader.on('close', async () => {
       await new Request(requests).store();
-      res.status(200).json('Import successful!');
+      res.status(200).json({ message: 'Import successful!' });
     });
-  };
-
-  /**
-   * Exports requests from database
-   * @param object req is an object containing information about the HTTP request
-   * @param object In response to req, you use res to send back the desired HTTP response.
-   *
-   * @return json message
-   */
-  export = async (req, res) => {
-    await new Request().generateAndSaveReports();
-    res.status(200).json('Export successful!');
   };
 
   /**
@@ -61,4 +49,4 @@ class RequestController {
   });
 }
 
-export default new RequestController();
+export default new ImportController();

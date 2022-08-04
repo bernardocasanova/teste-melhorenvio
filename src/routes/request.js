@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import requestController from '../controllers/RequestController';
+import importController from '../controllers/Logs/ImportController';
+import exportController from '../controllers/Logs/ExportController';
 
 const router = new Router();
 
-router.post('/import', requestController.import);
-router.post('/export', requestController.export);
+router.post('/import', importController.import);
+router.post('/export', exportController.export);
 
 export default router;
