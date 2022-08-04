@@ -4,7 +4,7 @@
 
 1. Primeiro passo é fazer o clone da aplicaçao, logo após efetuar o download do arquivo de logs e coloca-lo na pasta `src/extras/logs`.
   - Link para clone da aplicaçao: https://github.com/bernardocasanova/teste-melhorenvio
-  - Link para download do arquivo de logs: https://drive.google.com/file/d/1b9mpy5fXb3yQwcRDu03-pTBA2QCcLLTK/view?usp=sharing
+  - Link para download do arquivo de logs: https://drive.google.com/file/d/1b9mpy5fXb3yQwcRDu03-pTBA2QCcLLTK
 
 2. O segundo passo é a configuraçao das variaveis de ambiente:
   - Estara a disposiçao na raiz do projeto um arquivo chamado `.env.example`, neste arquivo contem a configuraçao basica/padrao para a utilizacao do ambiente de desenvolvimento. Basta remover o ".example" e as variaveis de ambiente estarao funcionais.
@@ -17,7 +17,8 @@
 
 4.1. Apos esta etapa a aplicaçao estara funcional
 
-5. A aplicacao tera 2 endpoints ambos do tipo "POST":
+5. A aplicacao tera 2 endpoints ambos do tipo `POST`:
+
   - O primeiro endpoint `/import` sera o responsavel pela importaçao do arquivo "logs.txt"
     - O arquivo "logs.txt" precisa estar localizado na pasta `src/extras/logs/logs.txt`.
   - O segundo endpoint `/export` sera o responsavel pela exportaçao dos 3 arquivos ".csv" descritos abaixo:

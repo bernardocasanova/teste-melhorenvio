@@ -31,6 +31,7 @@ export default class Request {
    * @return array with requests per consumer
    */
   async getRequestsByConsumer() {
+    const accumulator = 1;
     const requests = await RequestModel.aggregate([
       {
         $group: {
@@ -38,7 +39,7 @@ export default class Request {
           host: {
             $first: '$headers_host',
           },
-          quantity: { $sum: 1 },
+          quantity: { $sum: accumulator },
         },
       },
     ]);
@@ -51,6 +52,7 @@ export default class Request {
    * @return array with requests per service
    */
   async getRequestsByService() {
+    const accumulator = 1;
     const requests = await RequestModel.aggregate([
       {
         $group: {
@@ -60,7 +62,7 @@ export default class Request {
           service_name: {
             $first: '$service_name',
           },
-          quantity: { $sum: 1 },
+          quantity: { $sum: accumulator },
         },
       },
     ]);
