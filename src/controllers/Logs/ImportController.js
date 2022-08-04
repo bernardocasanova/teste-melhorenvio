@@ -30,21 +30,32 @@ class ImportController {
     });
   };
 
-  splitRequestsToSave = async (requests) => {
-    const splitSize = 2000;
+  /**
+   * Split requets to save
+   *
+   * @return void
+   */
+  splitRequestsToSave = (requests) => {
+    const splitSize = 1000;
     let newRequests = [];
 
     requests.forEach((request) => {
       newRequests.push(request);
       if (newRequests.length === splitSize) {
         this.saveSplitedRequests(newRequests);
+        console.log(newRequests.length);
         newRequests = [];
       }
     });
   };
 
-  saveSplitedRequests = async (requests) => {
-    await new Request(requests).store();
+  /**
+   * Save splited requests on database
+   *
+   * @return void
+   */
+  saveSplitedRequests = (requests) => {
+    new Request(requests).store();
   };
 
   /**

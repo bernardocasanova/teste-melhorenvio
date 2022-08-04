@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 class ExportFiles {
   /**
-   * Generate the requests per consumer report
+   * Generate requests per consumer report
    *
    * @return void
    */
@@ -18,7 +18,7 @@ class ExportFiles {
   }
 
   /**
-   * Generate the requests per service report
+   * Generate requests per service report
    *
    * @return void
    */
