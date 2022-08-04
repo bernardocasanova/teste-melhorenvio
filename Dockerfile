@@ -13,4 +13,4 @@ COPY . .
 
 RUN NODE_OPTIONS="--max-old-space-size=8192" npm run build
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
